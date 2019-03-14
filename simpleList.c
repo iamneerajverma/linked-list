@@ -8,8 +8,7 @@ struct LinkedList{
 	struct Node* tail;
 };
 
-
-struct LinkedList* getLinkedList(){
+struct LinkedList* getEmptyLinkedList(){
 	struct LinkedList* linkedList = (struct LinkedList*) malloc(sizeof(struct LinkedList*));
 	linkedList->head = NULL;
 	linkedList->tail = NULL;
@@ -18,8 +17,18 @@ struct LinkedList* getLinkedList(){
 }
 
 void initializeList(struct LinkedList* linkedList, int data){
-	linkedList->head = getNewNode(data);
-	linkedList->tail = linkedList->head;
+	if (linkedList->head == NULL){
+		linkedList->head = getNewNode(data);
+		printf("Head address: %d\n", linkedList->head);
+		printf("Head data: %d\n", linkedList->head->data);
+		linkedList->tail = linkedList->head;
+		printf("Head address after tail: %d\n", linkedList->head);
+		printf("Tail address: %d\n", linkedList->tail);
+		printf("Head data after tail: %d\n", linkedList->head->data);
+		printf("Tail data: %d\n", linkedList->tail->data);
+	} else {
+		printf("Already initialized\n");
+	}
 }
 
 void addToList(struct LinkedList* linkedList, int data){
@@ -32,35 +41,40 @@ void addToList(struct LinkedList* linkedList, int data){
 	linkedList->count += 1;
 }
 
-void traverse(struct Node* head){
-	if (head == NULL){
-		printf("Head is null");
+void traverse(struct LinkedList* linkedList){
+	if (linkedList == NULL){
+		printf("Linked List is null\n");
+	} else if (linkedList->head == NULL){
+		printf("Linked List has no head\n");
 	} else {
-		struct Node* curr_node = head;
+		struct Node* curr_node = linkedList->head;
 		int count = 0;
 		while (curr_node != NULL){
-			printf("%d -> ", curr_node->data);
+			printf("%d\n", curr_node);
+			printf("%d ->\n", curr_node->data);
 			curr_node = curr_node->next;
 			count += 1;
 		}
 		printf(" X\n");
 		printf("Total Records: %d", count);
+		printf("\n\n\n");
+
 	}
-	printf("\n\n\n");
 }
 
 int main(){
+	printf("\n\n");
 	int count = 15;
 	int index = 0;
-	struct LinkedList* linkedList = getLinkedList();
+	struct LinkedList* linkedList = getEmptyLinkedList();
+	printf("%d  %d\n", linkedList->head == NULL, linkedList->tail == NULL);
 	while (index < count){
-		int value = rand()%1000;
+		int value = rand()%1000;	
+		printf("value generated: %d\n", value);
 		addToList(linkedList, value);
 		index += 1;
-		printf("Generated value: %d\n", value);
 	}
-	printf("%d\n\n", linkedList->count);
-	printf("first node:%d\n\n", linkedList->head->data);
-	traverse(linkedList->head);
+	// traverse(linkedList);
 	return 5;
 }
+
