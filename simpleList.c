@@ -19,15 +19,9 @@ struct LinkedList* getEmptyLinkedList(){
 void initializeList(struct LinkedList* linkedList, int data){
 	if (linkedList->head == NULL){
 		linkedList->head = getNewNode(data);
-		printf("Head address: %d\n", linkedList->head);
-		printf("Head data: %d\n", linkedList->head->data);
 		linkedList->tail = linkedList->head;
-		printf("Head address after tail: %d\n", linkedList->head);
-		printf("Tail address: %d\n", linkedList->tail);
-		printf("Head data after tail: %d\n", linkedList->head->data);
-		printf("Tail data: %d\n", linkedList->tail->data);
 	} else {
-		printf("Already initialized\n");
+		printf("Head is already initialized\n");
 	}
 }
 
@@ -68,7 +62,6 @@ int main(){
 	printf("%d  %d\n", linkedList->head == NULL, linkedList->tail == NULL);
 	while (index < count){
 		int value = rand()%1000;
-		printf("value generated: %d\n", value);
 		addToList(linkedList, value);
 		index += 1;
 	}
