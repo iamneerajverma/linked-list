@@ -50,15 +50,13 @@ void traverse(struct LinkedList* linkedList){
 		struct Node* curr_node = linkedList->head;
 		int count = 0;
 		while (curr_node != NULL){
-			printf("%d\n", curr_node);
-			printf("%d ->\n", curr_node->data);
+			printf("%d ->", curr_node->data);
 			curr_node = curr_node->next;
 			count += 1;
 		}
 		printf(" X\n");
 		printf("Total Records: %d", count);
 		printf("\n\n\n");
-
 	}
 }
 
@@ -69,12 +67,12 @@ int main(){
 	struct LinkedList* linkedList = getEmptyLinkedList();
 	printf("%d  %d\n", linkedList->head == NULL, linkedList->tail == NULL);
 	while (index < count){
-		int value = rand()%1000;	
+		int value = rand()%1000;
 		printf("value generated: %d\n", value);
 		addToList(linkedList, value);
 		index += 1;
 	}
-	// traverse(linkedList);
-	return 5;
+	traverse(linkedList);
+	return 0;
 }
 
