@@ -54,17 +54,3 @@ void traverse(struct LinkedList* linkedList){
 	}
 }
 
-int main(){
-	printf("\n\n");
-	int count = 15;
-	int index = 0;
-	struct LinkedList* linkedList = getEmptyLinkedList();
-	while (index < count){
-		int value = rand()%1000;
-		addToList(linkedList, value);
-		index += 1;
-	}
-	traverse(linkedList);
-	return 0;
-}
-
