@@ -59,7 +59,6 @@ int main(){
 	int count = 15;
 	int index = 0;
 	struct LinkedList* linkedList = getEmptyLinkedList();
-	printf("%d  %d\n", linkedList->head == NULL, linkedList->tail == NULL);
 	while (index < count){
 		int value = rand()%1000;
 		addToList(linkedList, value);
