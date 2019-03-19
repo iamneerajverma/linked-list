@@ -44,7 +44,7 @@ void traverse(struct LinkedList* linkedList){
 		struct Node* curr_node = linkedList->head;
 		int count = 0;
 		while (curr_node != NULL){
-			printf("%d ->", curr_node->data);
+			printf("%d->", curr_node->data);
 			curr_node = curr_node->next;
 			count += 1;
 		}
@@ -54,3 +54,22 @@ void traverse(struct LinkedList* linkedList){
 	}
 }
 
+void printNodesInReverse(struct Node* node){
+	if (node == NULL){
+		printf("X");
+	} else {
+		printNodesInReverse(node->next);
+		printf("<-%d", node->data);
+	}
+}
+
+void printReverse(struct LinkedList* linkedList){
+	if (linkedList == NULL){
+		printf("Linked List is null\n");
+	} else if (linkedList->head == NULL){
+		printf("Linked List has no head\n");
+	} else{
+		printNodesInReverse(linkedList->head);
+	}
+	printf("\n\n\n");
+}
