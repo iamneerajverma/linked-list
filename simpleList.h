@@ -73,3 +73,22 @@ void printReverse(struct LinkedList* linkedList){
 	}
 	printf("\n\n\n");
 }
+
+void reverse(struct LinkedList* linkedList){
+	if (linkedList == NULL || linkedList->head == NULL){
+		return;
+	} else {
+		struct Node* previousNode = NULL;
+		struct Node* nextNode = NULL;
+		struct Node* currNode = linkedList->head;
+		while(currNode != NULL){
+			nextNode = currNode->next;
+			currNode->next = previousNode;
+			previousNode = currNode;
+			currNode = nextNode;
+		}
+		linkedList->tail = linkedList->head;
+		linkedList->head = previousNode;
+	}
+}
+

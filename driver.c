@@ -17,6 +17,5 @@ int main(){
 		addToList(linkedList, generateRandomNumber(max));
 	}
 	traverse(linkedList);
-	printReverse(linkedList);
 	return 0;
 }
